@@ -1,0 +1,123 @@
+\documentclass[a4paper, 11pt, oneside]{article}
+
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{layout}
+
+\usepackage{fancyhdr}
+\usepackage{soul}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{graphicx}
+
+\title{\hrule \vspace{1cm} Compte-rendu pour le TD (\no2) de l'option Sécurité Informatique}
+\author{Antoine \textsc{Foucault}}
+\date{\today}
+
+\begin{document}
+
+%Définition du style des bords de page
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\leftmark}
+\lfoot{Master 1 - ISTIC}
+\cfoot{}
+\rfoot{Page \thepage}
+
+%Titre
+\clearpage
+\thispagestyle{empty}
+
+\maketitle
+\begin{center}
+ \copyright 2014 ISTIC\\
+\end{center}
+\vspace{1cm}
+\hrule
+\thispagestyle{empty}
+
+\newpage
+
+%Sommaire
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+
+%Corps
+\section*{Introduction}
+
+
+
+\section{Questions}
+
+\subsection{Question 1}
+
+\subsubsection{A}
+
+L'usage du chiffrement symétrique implique que les deux utilisateurs partagent une clé commune. Dans notre cas on a quatre utilisateurs qui veulent communiquer entre eux de façon sécurisée (chaque utilisateur veut communiquer individuellement avec un autre de façon sécurisée).\\
+Ainsi, chaque utilisateur veut pouvoir communiquer avec les 3 autres de manière sécurisée. Cela implique donc 6 clés pour que chaque utilisateur puisse communiquer de manière sécurisée avec les autres utilisateurs.
+
+\subsubsection{B}
+
+Il suffit de générer une paire de clé par utilisateur (donc 4 paires dans notre cas). Ainsi l'ensemble des communications est sécurisée entre chaque utilisateur.
+
+\subsubsection{C}
+
+Dans un système à N utilisateurs, N(N-1) clés symétriques ou N paires de clés asymétriques sont nécessaires pour assurer la confidentialité des communications entre ces utilisateurs.
+
+\subsubsection{D}
+
+Dans le cas de grands groupes d'utilisateurs il est préférable d'utiliser un système de chiffrement asymétrique. En effet lorsque le nombre d'utilisateurs grandit on a besoin de beaucoup plus de clés avec un système de chiffrement symétrique qu'avec un système de chiffrement asymétrique (voir questions précédente).\\
+En effet pour rajouter une personne avec l'usage du chiffrement asymétrique,  il suffit seulement de lui générer une paire de clés asymétriques, lui renseigner sa clé privée et placer sa clé publique dans un annuaire par exemple.
+
+\subsection{Question 2}
+
+L'implémentation de l'algorithme DSA est effectuée dans la méthode DSA() située dans le fichier TD.py.
+
+\subsubsection{A}
+
+\subsubsection{B}
+
+\subsection{Question 3}
+
+\subsubsection{A}
+
+\subsubsection{B}
+
+\subsubsection{C}
+
+\subsubsection{D}
+
+\subsection{Question 4}
+
+\subsubsection{A}
+
+\subsubsection{B}
+
+\subsubsection{C}
+
+\subsubsection{D}
+
+\subsection{Question 5}
+
+\subsubsection{A}
+
+\subsubsection{B}
+
+\subsubsection{C}
+
+\subsection{Question 6}
+
+\section*{Conclusion}
+
+
+
+\end{document}
