@@ -117,7 +117,7 @@ Par conséquent, lors du déchiffrement, tous les messages à partir de M$_{5}$ 
 
 \subsubsection{D}
 
-
+L'usage de MAC pour les bloc chiffré permettrait d'assurer l'intégrité de chaque bloc envoyé.
 
 \subsection{Question 4}
 
@@ -135,7 +135,7 @@ Ce message ne forme pas un protocole d'échange de clé sécurisé. Amélie comm
 
 \subsubsection{D}
 
-Avec ne fonction de hachage à sens unique (non-cryptographique), l'engagement peut être considéré comme camouflant. En effet, l'utilisation du XOR afin de chiffrer la valeur de \textbf{i} permet à se chiffrement d'être inviolable si la valeur de \textbf{w} est aléatoire.
+Avec ne fonction de hachage à sens unique (non-cryptographique), l'engagement peut être considéré comme camouflant. En effet, l'utilisation du XOR afin de chiffrer la valeur de \textbf{i} permet à ce chiffrement d'être inviolable si la valeur de \textbf{w} est aléatoire.
 Par contre l'engagement n'est pas liant. La fonction de hachage n'étant pas cryptographique, il est théoriquement possible pour l’expéditeur (Alice) de calculer deux autres valeurs \textbf{x'} et \textbf{w'} tel que \textbf{H(x' XOR w') = H(x XOR w)}. 
 \\[5pt]
 Avec une fonction de hachage cryptographique, l'engagement est évidemment encore camouflant. De plus, Alice ne peut plus calculer de nouvelles valeurs de \textbf{x'} et \textbf{w'} tel que \textbf{H(x' XOR w') = H(x XOR w)}. L'engagement est donc à la fois liant et camouflant.
