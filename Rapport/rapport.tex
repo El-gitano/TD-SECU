@@ -19,7 +19,7 @@
 \setlength{\parskip}{10pt plus 1pt minus 1pt}
 
 \title{\hrule \vspace{1cm} Compte-rendu pour le TD (\no2) de l'option Sécurité Informatique}
-\author{Antoine \textsc{Foucault}}
+\author{Matthias \textsc{Gradaive} - Antoine \textsc{Foucault}}
 \date{\today}
 
 \begin{document}
@@ -66,7 +66,7 @@
 \subsubsection{A}
 
 L'usage du chiffrement symétrique implique que les deux utilisateurs partagent une clé commune. Dans notre cas on a quatre utilisateurs qui veulent communiquer entre eux de façon sécurisée (chaque utilisateur veut communiquer individuellement avec un autre de façon sécurisée).\\
-Ainsi, chaque utilisateur veut pouvoir communiquer avec les 3 autres de manière sécurisée. Cela implique donc 6 clés pour que chaque utilisateur puisse communiquer de manière sécurisée avec les autres utilisateurs.
+Ainsi, chaque utilisateur veut pouvoir communiquer avec les 3 autres de manière sécurisée. Cela implique donc 6 clés au total, pour que chaque utilisateur puisse communiquer de manière sécurisée avec les autres.
 
 \subsubsection{B}
 
@@ -79,23 +79,41 @@ Dans un système à N utilisateurs, N(N-1) clés symétriques ou N paires de cl�
 \subsubsection{D}
 
 Dans le cas de grands groupes d'utilisateurs il est préférable d'utiliser un système de chiffrement asymétrique. En effet lorsque le nombre d'utilisateurs grandit on a besoin de beaucoup plus de clés avec un système de chiffrement symétrique qu'avec un système de chiffrement asymétrique (voir questions précédente).\\
-En effet pour rajouter une personne avec l'usage du chiffrement asymétrique,  il suffit seulement de lui générer une paire de clés asymétriques, lui renseigner sa clé privée et placer sa clé publique dans un annuaire par exemple.
+En effet pour rajouter une personne avec l'usage du chiffrement asymétrique,  il suffit seulement de lui générer une paire de clés asymétriques, lui renseigner sa clé privée et placer sa clé publique dans un annuaire par exemple. La gestion en est donc beaucoup plus simple.
 
 \subsection{Question 2}
 
-L'implémentation de l'algorithme DSA est effectuée dans la méthode DSA() située dans le fichier TD.py.
+L'implémentation de l'algorithme DSA est effectuée dans le fichier TD.py (ne pas oublier de lire le README).\\
+Les signatures produites par cet algorithme sont probabilistes. En effet, le choix de la clé éphémère k peut entraîner plusieurs signatures, et l'algorithme de vérification considère que l'ensemble de ces signatures sont correctes.
 
 \subsubsection{A}
 
+Après exécution de DSAVerif() avec les paramètres fournis, cette signature est correcte.
+
 \subsubsection{B}
 
+Après exécution de DSAVerif() avec les paramètres fournis, cette signature est incorrecte.
+
+\newpage
 \subsection{Question 3}
 
 \subsubsection{A}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{CBC.png}
+  \caption{Diagramme présentant le système de chiffrement présenté dans le sujet}
+\end{figure}
+
 \subsubsection{B}
 
+Voici la formule générale de déchiffrement d'un message : M$_{i}$ = C$_{i-1}$ XOR Dec$_{sk}$(M$_{i-1}$ XOR C$_{i}$)\\[5pt]
+Pour commencer à déchiffrer le premier message (M$_{1}$), Baptiste doit avoir en sa possession les deux vecteurs d'initialisation (IV) qui sont publics. Chaque \og tour de déchiffrement \fg  permet ensuite d'obtenir l'information nécessaire au \og tour de déchiffrement \fg  suivant (Cette information est M$_{i-1}$).
+
 \subsubsection{C}
+
+Le sujet nous indique que le 5\ieme à été corrompu. On a donc en notre possession M5 et C5.\\
+Malgrés ces informations, nous ne possédons pas la clé Sk permettant de chiffrer/déchiffrer un bloc. Par conséquent, il nous est impossible de deviner le contenu des autres blocs à partir des informations que nous possédons.
 
 \subsubsection{D}
 
@@ -132,7 +150,7 @@ Denis doit donc envoyer deux messages :
 \end{description}
 \vspace{5pt}
 
-De cette manière Baptiste ne peux pas lire le message de Denis, tandis que Amélie et Christine peuvent en connaître le contenu, vérifier son intégrité et son authenticité.
+De cette manière Baptiste ne peux pas lire les messages de Denis, tandis que Amélie et Christine peuvent en connaître le contenu (pour celui qui leur est adressé), ainsi qu'en vérifier l'intégrité/authenticité.
 
 \subsubsection{C}
 
