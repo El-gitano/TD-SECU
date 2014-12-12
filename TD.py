@@ -2,7 +2,7 @@
 # -*-coding:Utf-8 -*
 
 """
-	Liens vers la doc. de la librairie
+	Liens vers la documentation de la librairie
 	
 	getRandomInteger 	->	https://www.dlitz.net/software/pycrypto/api/current/Crypto.Util.number-module.html#getRandomInteger 
 	getRandomRange 		->	https://www.dlitz.net/software/pycrypto/api/current/Crypto.Util.number-module.html#getRandomRange
@@ -60,7 +60,7 @@ def DSAGenParameter():
 	return p, q, y, g
 
 """
-	Génère un paire de clé à utiliser pour signer/vérifier un message
+	Génère une paire de clés a utiliser pour signer/vérifier un message
 	L'ensemble des paramètres doit être renseigné
 	
 		- q doit être un diviseur de (p-1)
@@ -127,10 +127,10 @@ def DSAsign(myMessage, p, q, g, sk):
 	Vérifie la signature d'un message
 	L'ensemble des paramètres doit être renseigné.
 	
-	- pk 			La clé publique
+	- pk 			La clé publique pour la vérification
 	- p, q et g 	Les paramètres ayant servi à générer la clé publique
 						q doit être un diviseur de (p-1)
-	- signature 	Un tuple contenant les deux éléments de la signature
+	- signature 	Un tuple contenant les deux éléments de la signature "r" et "s"
 	- message		Le message à vérifier
 	- hashMessage	Le hash du message
 	
@@ -168,7 +168,7 @@ def DSAverif(p, q, g, pk, message, messageHash, signature):
 	
 if __name__ == '__main__':
 	 
-	# Implémentation de DSA + Vérification
+	# Test implémentation de DSA
 	print "Question n°2\nTest de l'implémentation de DSA :\n"
 
 	myMessage = b"123456"
