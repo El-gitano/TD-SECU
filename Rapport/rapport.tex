@@ -15,6 +15,9 @@
 \usepackage{color}
 \usepackage{graphicx}
 
+%Pour l'espacement des paragraphes
+\setlength{\parskip}{10pt plus 1pt minus 1pt}
+
 \title{\hrule \vspace{1cm} Compte-rendu pour le TD (\no2) de l'option Sécurité Informatique}
 \author{Antoine \textsc{Foucault}}
 \date{\today}
@@ -114,11 +117,33 @@ Ce message ne forme pas un protocole d'échange de clé sécurisé. Amélie comm
 
 \subsection{Question 5}
 
+Dans le système présenté pour de cette question, il serait possible pour un attaquant de deviner le contenu d'un message chiffré, la possibilité des messages clairs se résumant parfois à 2 cas. Cependant nous ne prendrons pas en compte cette remarque pour la résolution des questions.
+
 \subsubsection{A}
+
+Dans cette situation, Amélie doit s'assurer que son choix de restaurant ne sera pas modifié par Baptiste. Cependant ce choix n'a pas besoin d'être confidentiel.
+Par conséquent, le chiffrement à clé publique n'est pas nécessaire, les destinataires doivent juste s'assurer que le message n'a pas été modifié et qu'il provient bien d'Amélie (ce qui convient exactement à l'usage d'un MAC).\\[5pt]
+Amélie a donc juste à envoyer : rest$_{A}$|MAC$_{sk_{AB}}$(rest$_{A}$)|MAC$_{sk_{AC}}$(rest$_{A}$)|MAC$_{sk_{AD}}$(rest$_{A}$)\\[5pt]
+Baptiste peut donc vérifier que le message provient bien d'Amélie et qu'il n'a pas été modifié. Il relaie ensuite le même message aux autres utilisateurs en enlevant sa partie MAC.
+Ainsi, si Baptiste souhaite modifier le choix d'Amélie, il ne pourra pas changer les MAC destinés aux autres membres et la modification sera détectée.
 
 \subsubsection{B}
 
+La fête étant surprise, Baptiste ne doit pas être capable de connaître le choix de Denis. L'usage de la cryptographie asymétrique est donc justifié ici. De plus, afin d'authentifier et d'assurer l'intégrité du message, l'usage d'un MAC est également utile.\\[5pt]
+Denis doit donc envoyer deux messages : 
+
+\begin{description}
+ \item[À Amélie : ] Enc$_{pk_{A}}$(rest$_{D}$)|MAC$_{sk_{AD}}$(Enc$_{pk_{A}}$(rest$_{D}$))
+ \item[À Christine : ] Enc$_{pk_{C}}$(rest$_{D}$)|MAC$_{sk_{CD}}$(Enc$_{pk_{C}}$(rest$_{D}$))
+\end{description}
+\vspace{5pt}
+
+De cette manière Baptiste ne peux pas lire le message de Denis, tandis que Amélie et Christine peuvent en connaître le contenu, vérifier son intégrité et son authenticité.
+
 \subsubsection{C}
+
+Dans cette situation on peut considérer Baptiste comme tiers de confiance. Baptiste va recueillir le vote de chaque membre comme un doublon de la forme [Contenu chiffré][MAC associé]. De cette manière, Baptiste est capable d'authentifier les messages qu'il reçoit, de s'assurer qu'ils n'ont pas été modifiés et d'éviter que quelqu'un vote deux fois. De plus, le chiffrement asymétrique assure que les différents votants ne connaîtront pas le choix que les autres ont pu effectuer (et ne seront pas donc influencés) avant la fin du vote.
+Dans le cas où il n'y a pas chifrement asymétrique, les membres n'ont pas de moyen pour assurer la confidentialité de leurs messages. Par conséquent le mieux reste de se retrouver pour voter "physiquement" !
 
 \subsection{Question 6}
 

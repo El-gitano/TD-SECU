@@ -1,4 +1,12 @@
 tdSecu
 ======
 
-TD n°2 de sécurité informatique
+Avant de lancer les scripts il faut installer la librairie pycrypto. 
+Cette librairie nous sert à générer de grands nombres premiers.
+
+		=== INSTALLATION ===
+
+1. Passer sous le compte administrateur du PC
+2. Se placer dans le dossier "pycrypto"
+3. Lancer la commande "python setup.py build"
+4. Lancer la commande "python setup.py install"
