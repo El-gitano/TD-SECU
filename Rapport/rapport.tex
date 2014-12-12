@@ -121,12 +121,22 @@ Malgrés ces informations, nous ne possédons pas la clé Sk permettant de chiff
 
 \subsubsection{A}
 
+Vrai. Si la taille de l’ensemble d'entrée et supérieur à l'ensemble de sortie, alors il y a obligatoirement des collisions. 
+
 \subsubsection{B}
+
+Vrai. Dans un protocole d’authentification, nous n'avons pas besoin de connaître l'identité de la personne. Par exemple, il suffirait d'avoir la preuve de son appartenance à un groupe qui disposent de certains droits. 
 
 \subsubsection{C}
 
+Ce message ne forme pas un protocole d'échange de clé sécurisé. Amélie communique seulement le hash de la clé et la signature du hash. Cela ne permet pas à Baptiste de récupérer la clé. On ne peut donc pas parler de protocole d'échange de clé.
+
 \subsubsection{D}
 
+Avec ne fonction de hachage à sens unique (non-cryptographique), l'engagement peut être considéré comme camouflant. En effet, l'utilisation du XOR afin de chiffrer la valeur de \textbf{i} permet à se chiffrement d'être inviolable si la valeur de \textbf{w} est aléatoire.
+Par contre l'engagement n'est pas liant. La fonction de hachage n'étant pas cryptographique, il est théoriquement possible pour l’expéditeur (Alice) de calculer deux autres valeurs \textbf{x'} et \textbf{w'} tel que \textbf{H(x' XOR w') = H(x XOR w)}. 
+\\[5pt]
+Avec une fonction de hachage cryptographique, l'engagement est évidemment encore camouflant. De plus, Alice ne peut plus calculer de nouvelles valeurs de \textbf{x'} et \textbf{w'} tel que \textbf{H(x' XOR w') = H(x XOR w)}. L'engagement est donc à la fois liant et camouflant.
 \subsection{Question 5}
 
 Dans le système présenté pour de cette question, il serait possible pour un attaquant de deviner le contenu d'un message chiffré, la possibilité des messages clairs se résumant parfois à 2 cas. Cependant nous ne prendrons pas en compte cette remarque pour la résolution des questions.
