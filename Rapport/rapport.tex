@@ -172,6 +172,12 @@ Dans le cas où il n'y a pas chifrement asymétrique, les membres n'ont pas de m
 
 \subsection{Question 6}
 
+Les signatures DSA ne permettent pas de réaliser des échanges confidentiels (chiffrés). Les clés pour les signatures DSA ne peuvent pas être utilisées pour réaliser un chiffrement asymétrique.
+Nous pouvons alors utiliser l'échange de clé Diffie-Hellman. Cet échange permet à deux personnes de définir une clé qu'ils pourront ensuite utiliser comme clé pour un chiffrement symétrique).
+Cependant Diffie-Hellman est vulnérable aux attaques man-in-the-middle. Nous pouvons corriger ce problème en signant la valeur envoyée par Alice à Bob (et de même pour Bob vers Alice). Alice et Bob vérifient qu'ils reçoivent bien la valeur envoyée par la bonne personne (en utilisant la partie publique de la clé DSA de l'autre personne) et calculent la clé qu'ils utiliseront pour le chiffrement symétrique.
+\\
+Ils peuvent ensuite s'échanger des messages confidentiels (chiffrés avec la clé symétrique) et authentifiés(en utilisant leurs clés DSA).
+
 \section*{Conclusion}
 
 
